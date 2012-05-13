@@ -4,6 +4,13 @@ mikanspweight
 Set up
 ------
 
+ + Install Net::Twitter::Lite and Net::OAuth perl modules.
+
+   <pre>
+    # apt-get install libnet-twitter-lite-perl
+    # apt-get install libnet-oauth-perl
+   </pre>
+
  + Go to https://dev.twitter.com/ and press 'Create an app'.
 
  + Fill information and then press 'Create your Twitter application'.
