@@ -52,3 +52,6 @@ TODO items
 
  + Read the next timeline if we cannot find the latest mweight in the
    first page.
+ + Avoid having secret tokens as plain text.
+ + Daemonize rt-mweight.pl.
+ + Implement more interesting features rather than simple retweeting.
