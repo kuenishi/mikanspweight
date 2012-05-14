@@ -19,7 +19,7 @@ my $timeline = $t->user_timeline({screen_name => 'mikansp'});
 foreach my $status (@$timeline) {
     my %info = %$status;
 
-    if ($info{'text'} =~ /^My weight/) {
+    if ($info{'text'} =~ /^My weight: [\d.]+ kg.[^#]*#mweight/) {
 	eval {
 	    $t->retweet($info{'id'});
 	};
