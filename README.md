@@ -11,15 +11,7 @@ Set up
     # apt-get install libnet-oauth-perl
    </pre>
 
- + Go to https://dev.twitter.com/ and press 'Create an app'.
-
- + Fill information and then press 'Create your Twitter application'.
-
- + Move to 'Settings' tab and change your application type to 'Read and Write'.
-
- + Move to 'Details' tab and press 'Create my access token'.
-
- + Write down
+ + Get following information from @moritapo
 
    * Consumer key
    * Consumer secret
@@ -55,3 +47,40 @@ TODO items
  + Avoid having secret tokens as plain text.
  + Daemonize rt-mweight.pl.
  + Implement more interesting features rather than simple retweeting.
+
+mikanspweight.py
+================
+
+ + Deflate the file consumer.zip
+
+ + Login with your default browser
+
+ + do the follwoing sequence:
+
+ <pre>
+ $ virtialenv .
+ $ source bin/activate
+ $ pip install twitter
+ $ python rt_mweight.py
+ </pre>
+
+ + Then your default browser starts and authorize mikanspweight
+
+ + Copy the PIN code
+
+ + Paste to the command line
+
+ + Enjoy the timeline from streaming of @mikansp.
+
+
+TODO
+----
+
+ + forecast
+
+refs
+----
+
+ + https://dev.twitter.com/docs/api/2/get/user
+
+ + https://dev.twitter.com/docs/api/1/post/statuses/retweet/%3Aid
