@@ -1,4 +1,4 @@
-import twitter, subprocess
+import twitter, subprocess, datetime
 from twitter.util import printNicely
 '''
 prequisites: install python and virtualenv
@@ -30,9 +30,21 @@ def extract_consumer_data():
     print(secret)
     return key, secret
 
-def do_rt(authorization, id_str):
-    t = twitter.Twitter(auth=authorization)
-    return t.statuses.retweet(id=id_str)
+def do_rt(authorization, id_str, tw = None):
+    t = None
+    if tw is None:  t = twitter.Twitter(auth=authorization)
+    else:           t = tw
+    r = t.statuses.retweet(id=id_str)
+    print(r)
+    return t
+
+def say(authorization, serif, tw = None):
+    t = None
+    if tw is None:  t = twitter.Twitter(auth=authorization)
+    else:           t = tw
+    r = t.statuses.update(status=serif)
+    print(r)
+    return t
 
 def make_auth():
     key, secret = extract_consumer_data()
@@ -50,6 +62,7 @@ if __name__ == '__main__':
     tweet_iter = stream.user()
 
     for tweet in tweet_iter:
+        print(datetime.datetime.now().ctime())
         if tweet.get('text'):
             pass
         else:
@@ -59,6 +72,11 @@ if __name__ == '__main__':
         if u['screen_name'] == 'mikansp':
             print('@mikansp said: %s' % tweet['text'])
             if tweet['text'][:10] == 'My weight:':
-                r = do_rt(authorization, tweet['id_str'])
+                t = do_rt(authorization, tweet['id_str'])
+                weight = float(tweet['text'][11:15])
+                serif = u'【mikansp予報】 %.1f' % (weight + 0.5)
+                say(authorization, serif)
                 print("RT done:")
-                print(r)
+                print(t)
+        else:
+            print(u['screen_name'])
