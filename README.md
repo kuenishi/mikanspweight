@@ -78,6 +78,8 @@ TODO
 
  + forecast
 
+ + daemonize http://taichino.com/programming/1212
+
 refs
 ----
 
