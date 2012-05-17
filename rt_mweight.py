@@ -50,7 +50,6 @@ if __name__ == '__main__':
     tweet_iter = stream.user()
 
     for tweet in tweet_iter:
-        print('\nnew tweet!!! ============')
         if tweet.get('text'):
             #printNicely(tweet['text'])
             pass
@@ -59,11 +58,11 @@ if __name__ == '__main__':
 
         try:
             if u['screen_name'] == 'mikansp':
+                print('@mikansp said: %s' % tweet['text'])
                 if tweet['text'][:10] == 'My weight:':
                     r = do_rt(authorization, tweet['id_str'])
                     print("RT done:")
                     print(r)
-                else:
-                    print('@mikansp said: %s' % tweet['text'])
+
         except:
             continue

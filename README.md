@@ -51,9 +51,12 @@ TODO items
 mikanspweight.py
 ================
 
- + Deflate the file consumer.zip
+ + You need some default browser (like w3m, Safari, etc.), Python and virtualenv.
+ <pre>
+ $ sudo aptitude install python-virtualenv
+ </pre>
 
- + Login with your default browser
+ + Deflate the file consumer.zip
 
  + do the follwoing sequence:
 
