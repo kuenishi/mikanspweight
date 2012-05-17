@@ -51,18 +51,14 @@ if __name__ == '__main__':
 
     for tweet in tweet_iter:
         if tweet.get('text'):
-            #printNicely(tweet['text'])
             pass
         else:
             continue
 
-        try:
-            if u['screen_name'] == 'mikansp':
-                print('@mikansp said: %s' % tweet['text'])
-                if tweet['text'][:10] == 'My weight:':
-                    r = do_rt(authorization, tweet['id_str'])
-                    print("RT done:")
-                    print(r)
-
-        except:
-            continue
+        u = tweet['user']
+        if u['screen_name'] == 'mikansp':
+            print('@mikansp said: %s' % tweet['text'])
+            if tweet['text'][:10] == 'My weight:':
+                r = do_rt(authorization, tweet['id_str'])
+                print("RT done:")
+                print(r)
