@@ -1,4 +1,4 @@
-import twitter, subprocess, datetime
+import twitter, subprocess, datetime, sys
 from twitter.util import printNicely
 '''
 prequisites: install python and virtualenv
@@ -62,7 +62,7 @@ if __name__ == '__main__':
     tweet_iter = stream.user()
 
     for tweet in tweet_iter:
-        print(datetime.datetime.now().ctime())
+        now = datetime.datetime.now().ctime()
         if tweet.get('text'):
             pass
         else:
@@ -70,13 +70,14 @@ if __name__ == '__main__':
 
         u = tweet['user']
         if u['screen_name'] == 'mikansp':
-            print('@mikansp said: %s' % tweet['text'])
+            print('@mikansp said: %s %s' % (tweet['text'], now))
             if tweet['text'][:10] == 'My weight:':
                 t = do_rt(authorization, tweet['id_str'])
                 weight = float(tweet['text'][11:15])
-                serif = u'【mikansp予報】 %.1f' % (weight + 0.5)
+                serif = "[mikansp forecast] %.1f" % (weight + 0.5)
                 say(authorization, serif)
                 print("RT done:")
                 print(t)
         else:
-            print(u['screen_name'])
+            sys.stdout.write('.')
+            #print('%s (%s)' % (now, u['screen_name']))
