@@ -63,21 +63,18 @@ if __name__ == '__main__':
 
     for tweet in tweet_iter:
         now = datetime.datetime.now().ctime()
-        if tweet.get('text'):
-            pass
-        else:
-            continue
+        if tweet.get('text'): pass
+        else:                 continue
 
         u = tweet['user']
         if u['screen_name'] == 'mikansp':
-            print('@mikansp said: %s %s' % (tweet['text'], now))
+            print('\n@mikansp said: %s %s' % (tweet['text'], now))
             if tweet['text'][:10] == 'My weight:':
-                t = do_rt(authorization, tweet['id_str'])
+                t = do_rt(authorization, tweet['id_str'], tw=None)
                 weight = float(tweet['text'][11:15])
-                serif = "[mikansp forecast] %.1f" % (weight + 0.5)
-                say(authorization, serif)
-                print("RT done:")
-                print(t)
+                serif = "[mikansp forecast] %.1f kg. (%s)" % ((weight + 0.7), now)
+                say(authorization, serif, tw=t)
+                print("RT done: %s (%s)" % (weight, now))
         else:
             sys.stdout.write('.')
-            #print('%s (%s)' % (now, u['screen_name']))
+            sys.stdout.flush()
