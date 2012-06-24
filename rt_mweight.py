@@ -79,7 +79,6 @@ if __name__ == '__main__':
             print('\n@mikansp said: %s %s' % (tweet['text'], now))
             if tweet['text'][:10] == 'My weight:':
                 t = do_rt(authorization, tweet['id_str'])
-                print("RT done: %s (%s)" % (weight, now))
                 call_moritapo()
 
                 print(tweet['id_str'])
@@ -88,6 +87,9 @@ if __name__ == '__main__':
                     weight = float(tweet['text'][11:15])
                 except:
                     weight = float(tweet['text'][11:14])
+
+                print("RT done: %s (%s)" % (weight, now))
+
                 if prev :
                     comment = ''
                     if weight - prev > 0.0 :
